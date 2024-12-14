@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useState } from "react"
 import { useCharacterStore } from '../store/character';
 import CharacterCard from '../components/CharacterCard';
 
@@ -13,6 +12,7 @@ const HomePage = () => {
 
     return (
         <>
+            
             {characters.length===0 && (
                 <div>
                     <p>No characters found...</p>
@@ -22,11 +22,13 @@ const HomePage = () => {
                 </div>
             )}
 
-            {characters.map((character) => {
-                return (
-                    <CharacterCard key={character._id} character={character}></CharacterCard>
-                );
-            })}
+            <div className="character-list">
+                {characters.map((character) => {
+                    return (
+                        <CharacterCard key={character._id} character={character}></CharacterCard>
+                    );
+                })}
+            </div>
         </>
     )
 }

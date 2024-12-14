@@ -17,6 +17,10 @@ const characterSchema = new mongoose.Schema({
         type: Array,
         required: false
     },
+    info: {
+        type: Array,
+        required: false
+    }
 }, {
     timestamps: true
 });
