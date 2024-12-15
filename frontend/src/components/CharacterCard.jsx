@@ -159,7 +159,7 @@ const CharacterCard = ({character}) => {
                                             </>
                                         )}
                                         <hr></hr>
-                                        {!updating && (<>{item.content}</>)}
+                                        {!updating && (<span style={{whiteSpace: 'pre-line'}}>{item.content}</span>)}
                                         {updating && (
                                             <textarea
                                             placeholder='Content'
@@ -168,7 +168,8 @@ const CharacterCard = ({character}) => {
                                             onChange={(e) => setUpdatedCharacter({ ...updatedCharacter, info:
                                                 updatedCharacter.info.map((item, x) => (x === i ? {...item, content: e.target.value} : item))
                                             })}
-                                            style={{width: '100%'}}/>
+                                            style={{width: '100%'}}
+                                            rows={6}/>
                                         )}
                                         <br></br>
                                         <br></br>

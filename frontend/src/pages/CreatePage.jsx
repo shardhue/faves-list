@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useCharacterStore } from "../store/character"
 
 const CreatePage = () => {
@@ -24,6 +24,11 @@ const CreatePage = () => {
             setSuccessful(true);
         }
     };
+
+    useEffect(() => {
+        setSubmitted(false);
+        setSuccessful(false);
+    }, [newCharacter]);
     
     return (
         <>
@@ -32,7 +37,7 @@ const CreatePage = () => {
                 placeholder='Character Name'
                 name='name'
                 value={newCharacter.name}
-                onChange={(e)=>setNewCharacter({...newCharacter, name: e.target.value})}
+                onChange={(e)=>{setNewCharacter({...newCharacter, name: e.target.value})}}
                 />
                 <input
                 placeholder='Fandom'
