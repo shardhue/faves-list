@@ -35,7 +35,7 @@ const CharacterCard = ({character}) => {
                     <img src={character.image}></img>
                 </div>
                 <div className="character-info">
-                    {character.name}
+                    <h2>{character.name}</h2>
                     <br></br>{character.fandom}
                     <br></br><button onClick={() => setInfoShow(true)}>View Details</button>
                 </div>
@@ -114,7 +114,7 @@ const CharacterCard = ({character}) => {
                                                             onChange={(e) => setUpdatedCharacter({ ...updatedCharacter, etc:
                                                                 updatedCharacter.etc.map((item, x) => (x === i ? {...item, field: e.target.value} : item))
                                                             })}/>
-                                                            <button onClick={() => setUpdatedCharacter({...updatedCharacter, etc:
+                                                            <button className="modal-minus" onClick={() => setUpdatedCharacter({...updatedCharacter, etc:
                                                                 [...updatedCharacter.etc.filter((item, y) => y !== i)]
                                                             })}>-</button>
                                                         </>
@@ -136,8 +136,8 @@ const CharacterCard = ({character}) => {
                         </div>
 
                         <div className="modal-info">
-                            {character.info.length===0 && (
-                                <>No content added...</>
+                            {!updating && (
+                                <>{character.info.length===0 && (<>No content added...</>)}</>
                             )}
                             {updatedCharacter.info.map((item, i) => {
                                 return (
@@ -153,7 +153,7 @@ const CharacterCard = ({character}) => {
                                                     updatedCharacter.info.map((item, x) => (x === i ? {...item, title: e.target.value} : item))
                                                 })}
                                                 style={{width: '80%'}}/>
-                                                <button onClick={() => setUpdatedCharacter({...updatedCharacter, info:
+                                                <button className="modal-minus" onClick={() => setUpdatedCharacter({...updatedCharacter, info:
                                                     [...updatedCharacter.info.filter((item, y) => y !== i)]
                                                 })}>-</button>
                                             </>
@@ -202,7 +202,8 @@ const CharacterCard = ({character}) => {
                             </div>
                             <div className="modal-footer-right" style={{textAlign: 'right'}}>
                                 {updating && (
-                                    <button onClick={() => {setInfoShow(false), handleDeleteCharacter(character._id)}}>Delete</button>
+                                    <button onClick={() => {setInfoShow(false), handleDeleteCharacter(character._id)}}
+                                    style={{color: 'red'}}>Delete</button>
                                 )}
                             </div>
                         </div>

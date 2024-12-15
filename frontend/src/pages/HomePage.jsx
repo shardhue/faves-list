@@ -14,7 +14,7 @@ const HomePage = () => {
         <>
             
             {characters.length===0 && (
-                <div>
+                <div className='character-none'>
                     <p>No characters found...</p>
                     <Link to={"/create"}>
                         Create character
